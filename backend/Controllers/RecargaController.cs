@@ -20,7 +20,6 @@ public class RecargaController : ControllerBase
     [HttpPost("procesar")]
     public IActionResult Procesar([FromBody] RecargaRequest req)
     {
-        // ── Validaciones de entrada ───────────────────────────────────────────
         if (string.IsNullOrWhiteSpace(req.NumeroCelular))
             return BadRequest(Fail("El número de celular es obligatorio."));
 
@@ -36,7 +35,6 @@ public class RecargaController : ControllerBase
         if (string.IsNullOrWhiteSpace(req.ClaveOnline))
             return BadRequest(Fail("La clave online es obligatoria."));
 
-        // ── Obtener cliente del token ─────────────────────────────────────────
         var clienteIdStr = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         if (!int.TryParse(clienteIdStr, out int clienteId))
             return Unauthorized(Fail("Sesión inválida."));
@@ -45,15 +43,12 @@ public class RecargaController : ControllerBase
         if (cliente == null)
             return Unauthorized(Fail("Sesión inválida."));
 
-        // ── Verificar clave online ────────────────────────────────────────────
         if (!BCrypt.Net.BCrypt.Verify(req.ClaveOnline, cliente.ClaveOnlineHash))
             return Unauthorized(Fail("Clave online incorrecta. Intente nuevamente."));
 
-        // ── Prevenir doble envío ──────────────────────────────────────────────
         if (_store.ExisteRecargaReciente(clienteId, req.NumeroCelular.Trim(), req.Operador, req.Monto))
             return Conflict(Fail("La recarga ya fue procesada. Por favor espere."));
 
-        // ── Registrar recarga ─────────────────────────────────────────────────
         var recarga = new Recarga
         {
             ClienteId = clienteId,

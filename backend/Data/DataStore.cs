@@ -3,10 +3,6 @@ using BancoArboleda.Models;
 
 namespace BancoArboleda.Data;
 
-/// <summary>
-/// Almacenamiento en memoria con persistencia en archivo JSON.
-/// No requiere base de datos externa. Datos listos al iniciar.
-/// </summary>
 public class DataStore
 {
     private static readonly string _dataPath = Path.Combine(AppContext.BaseDirectory, "Data", "recargas.json");
@@ -22,7 +18,6 @@ public class DataStore
         LoadRecargas();
     }
 
-    // ── Clientes de prueba (hardcoded, no requiere BD) ────────────────────────
     private void SeedClientes()
     {
         Clientes = new List<Cliente>
@@ -38,14 +33,12 @@ public class DataStore
         };
     }
 
-    // ── Recargas: persiste en archivo JSON ────────────────────────────────────
     private void LoadRecargas()
     {
         try
         {
             var dir = Path.GetDirectoryName(_dataPath)!;
             if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
-
             if (File.Exists(_dataPath))
             {
                 var json = File.ReadAllText(_dataPath);
@@ -68,7 +61,7 @@ public class DataStore
                 if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
                 File.WriteAllText(_dataPath, JsonSerializer.Serialize(Recargas, new JsonSerializerOptions { WriteIndented = true }));
             }
-            catch { /* continúa aunque no pueda guardar */ }
+            catch { }
         }
     }
 
@@ -85,8 +78,6 @@ public class DataStore
         }
     }
 
-    public static string GenerarReferencia()
-    {
-        return $"REC-{DateTime.Now:yyyyMMddHHmmss}-{Random.Shared.Next(1000, 9999)}";
-    }
+    public static string GenerarReferencia() =>
+        $"REC-{DateTime.Now:yyyyMMddHHmmss}-{Random.Shared.Next(1000, 9999)}";
 }

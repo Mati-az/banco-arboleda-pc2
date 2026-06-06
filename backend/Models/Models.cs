@@ -21,8 +21,6 @@ public class Recarga
     public DateTime FechaHora { get; set; } = DateTime.Now;
 }
 
-// ── Request / Response DTOs ───────────────────────────────────────────────────
-
 public class LoginRequest
 {
     public string Usuario { get; set; } = "";

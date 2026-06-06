@@ -24,14 +24,12 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public IActionResult Login([FromBody] LoginRequest req)
     {
-        // Validar campos vacíos
         if (string.IsNullOrWhiteSpace(req.Usuario))
             return BadRequest(new ApiResponse<object> { Success = false, Message = "El usuario es obligatorio." });
 
         if (string.IsNullOrWhiteSpace(req.Password))
             return BadRequest(new ApiResponse<object> { Success = false, Message = "La contraseña es obligatoria." });
 
-        // Buscar cliente (consulta segura — no hay SQL, no hay injection)
         var cliente = _store.Clientes.FirstOrDefault(c =>
             c.Usuario.Equals(req.Usuario.Trim(), StringComparison.OrdinalIgnoreCase));
 
