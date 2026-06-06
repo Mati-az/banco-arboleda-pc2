@@ -1,15 +1,13 @@
 # Banco Arboleda — PC2 SI806
 
 Sistema web bancario — Módulo de Recarga Celular  
-**Curso:** Desarrollo Adaptativo e Integración de Software — SI806  
-**Universidad:** Universidad Nacional de Ingeniería — 2026-1
 
 ---
 
 ## Requisitos
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-- [Node.js](https://nodejs.org) (para servir el frontend)
+- Python 3 (ya viene instalado en Windows 10/11)
 
 ---
 
@@ -28,7 +26,7 @@ API disponible en: **http://localhost:5000**
 
 ```bash
 cd frontend
-npm start
+python -m http.server 3000
 ```
 
 App disponible en: **http://localhost:3000**
@@ -54,12 +52,11 @@ banco-arboleda-pc2/
 │   ├── Program.cs
 │   ├── appsettings.json
 │   ├── Controllers/
-│   │   ├── AuthController.cs
-│   │   └── RecargaController.cs
+│   │   ├── AuthController.cs       POST /api/auth/login
+│   │   └── RecargaController.cs    POST /api/recarga/procesar
 │   ├── Models/Models.cs
 │   └── Data/DataStore.cs
 └── frontend/                   HTML + CSS + JS — Puerto 3000
-    ├── package.json
     └── index.html
 ```
 
