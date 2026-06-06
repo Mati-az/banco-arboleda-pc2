@@ -26,7 +26,7 @@ Abrir el navegador en: **http://localhost:5000**
 
 ---
 
-## 🔑 Credenciales de prueba
+## Credenciales de prueba
 
 | Campo | Valor |
 |-------|-------|
@@ -36,7 +36,7 @@ Abrir el navegador en: **http://localhost:5000**
 
 ---
 
-## 📋 Historia de Usuario implementada
+## Historia de Usuario implementada
 
 **HU-01 — Recarga de Celular**  
 *Como cliente bancario autenticado, quiero recargar saldo a un número de celular ingresando el número, seleccionando el operador, el monto y confirmando con mi clave online, para completar la operación de forma segura desde el portal web del banco.*
@@ -50,7 +50,7 @@ Abrir el navegador en: **http://localhost:5000**
 
 ---
 
-## 📁 Estructura del proyecto
+## Estructura del proyecto
 
 ```
 BancoArboleda/
@@ -70,13 +70,13 @@ BancoArboleda/
 
 ---
 
-## 🗄️ Base de datos
+## Base de datos
 
 No requiere configuración externa. Las recargas se persisten automáticamente en `Data/recargas.json`. El usuario de prueba se crea en memoria al iniciar.
 
 ---
 
-## 🛡️ Seguridad
+## Seguridad
 
 - Contraseñas y clave online hasheadas con **BCrypt**
 - Autenticación mediante **JWT** (válido 8 horas)
@@ -86,7 +86,7 @@ No requiere configuración externa. Las recargas se persisten automáticamente e
 
 ---
 
-## 🏗️ Arquitectura
+## Arquitectura
 
 Proyecto único **ASP.NET Core** que actúa como backend (API REST) y sirve el frontend (HTML/CSS/JS estático). Las capas están separadas en el código:
 
