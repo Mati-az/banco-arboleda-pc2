@@ -110,8 +110,7 @@ input.err{border-color:var(--rojo);box-shadow:0 0 0 3px rgba(192,57,43,.1)}
         <input id="l-pass" type="password" placeholder="Ingrese su contraseña" maxlength="100"/>
         <div class="ferr" id="l-pass-err"></div>
       </div>
-      <button class="btn btn-primary" id="btn-login">🔐 Ingresar</button>
-      <p style="text-align:center;font-size:.72rem;color:#9CA3AF;margin-top:1.25rem">🔒 Conexión segura — Banco Arboleda © 2026</p>
+      <button class="btn btn-primary" id="btn-login">Ingresar</button>
     </div>
   </div>
 </div>
@@ -312,9 +311,9 @@ $('btn-login').addEventListener('click', async () => {
   if(!pass){setErr('l-pass','l-pass-err','La contraseña es obligatoria.');ok=false;}
   else setErr('l-pass','l-pass-err','');
   if(!ok) return;
-  $('btn-login').disabled=true; $('btn-login').textContent='⏳ Verificando...';
+  $('btn-login').disabled=true; $('btn-login').textContent='Verificando...';
   const res = await api('POST','/auth/login',{usuario:user,password:pass});
-  $('btn-login').disabled=false; $('btn-login').textContent='🔐 Ingresar';
+  $('btn-login').disabled=false; $('btn-login').textContent='Ingresar';
   if(res.ok && res.data.success){
     state.token=res.data.data.token; state.nombre=res.data.data.nombre;
     sessionStorage.setItem('ba_token',state.token); sessionStorage.setItem('ba_nombre',state.nombre);
