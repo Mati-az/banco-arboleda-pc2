@@ -1,4 +1,4 @@
-# Banco Arboleda — PC2 SI806
+# Banco Arboleda — PC2
 
 Sistema web bancario — Módulo de Recarga Celular  
 
@@ -7,11 +7,11 @@ Sistema web bancario — Módulo de Recarga Celular
 ## Requisitos
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-- Python 3 (ya viene instalado en Windows 10/11)
+- Python 3
 
 ---
 
-## Levantar el Backend (Terminal 1)
+## Levantar el Backend
 
 ```bash
 cd backend
@@ -22,7 +22,7 @@ API disponible en: **http://localhost:5000**
 
 ---
 
-## Levantar el Frontend (Terminal 2)
+## Levantar el Frontend
 
 ```bash
 cd frontend
@@ -43,7 +43,10 @@ App disponible en: **http://localhost:3000**
 
 ---
 
-## Estructura
+
+## Estructura del Proyecto en GitHub
+
+Link del proyecto en GitHub: **https://github.com/Mati-az/banco-arboleda-pc2**
 
 ```
 banco-arboleda-pc2/
@@ -65,13 +68,3 @@ banco-arboleda-pc2/
 ## Base de datos
 
 No requiere configuración. Las recargas se guardan en `backend/Data/recargas.json` automáticamente.
-
----
-
-## Seguridad
-
-- Contraseñas hasheadas con BCrypt
-- Autenticación JWT (8 horas)
-- Validaciones en frontend y backend
-- Prevención de doble envío
-- Sin SQL → sin SQL Injection
